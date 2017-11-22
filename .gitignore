@@ -6,6 +6,9 @@
 *.iml
 backend/src/main/resources/config/application-local.properties
 backend/target
+frontend/src/main/frontend/dist
+frontend/src/main/frontend/node
+frontend/target
 
 # node
 node_modules/

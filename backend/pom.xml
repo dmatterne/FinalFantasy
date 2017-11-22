@@ -24,11 +24,6 @@
   </build>
 
   <dependencies>
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-mapper-asl</artifactId>
-      <version>${jackson-mapper-asl.version}</version>
-    </dependency>
     <!-- Spring BOOT main dependency-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
