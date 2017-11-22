@@ -4,6 +4,8 @@
 # intellij
 .idea/
 *.iml
+backend/src/main/resources/config/application-local.properties
+backend/target
 
 # node
 node_modules/
@@ -30,3 +32,4 @@ e2e/
 hs_err_pid*
 
 
+/backend/src/main/resources/config/application-local.properties
