@@ -92,12 +92,12 @@ public class EquipmentItem extends Item {
     private Integer experience;
 
     @ManyToOne
-    @JoinColumn(name = "skill_1", referencedColumnName = "id",
+    @JoinColumn(name = "skill_1_id", referencedColumnName = "id",
             foreignKey = @ForeignKey(name = "equipitem_skill_1_fk"))
     private Skill skill1;
 
     @ManyToOne
-    @JoinColumn(name = "skill_2", referencedColumnName = "id",
+    @JoinColumn(name = "skill_2_id", referencedColumnName = "id",
             foreignKey = @ForeignKey(name = "equipitem_skill_2_fk"))
     private Skill skill2;
 

@@ -5,6 +5,7 @@ public enum ItemType {
     AVATAR,
     CLOTHING,
     KEY_ITEM,
-    EQUIPMENT,
+    WEAPON,
+    SIGIL,
     MATERIAL
 }
