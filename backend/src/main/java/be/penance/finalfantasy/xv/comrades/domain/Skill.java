@@ -1,6 +1,5 @@
 package be.penance.finalfantasy.xv.comrades.domain;
 
-import be.penance.finalfantasy.xv.comrades.enums.QuestType;
 import be.penance.finalfantasy.xv.comrades.enums.Rarity;
 import be.penance.finalfantasy.xv.comrades.enums.SkillType;
 import be.penance.finalfantasy.xv.comrades.enums.Useability;
@@ -10,6 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -41,14 +41,14 @@ public class Skill implements Serializable {
     @Column(name = "useability", length = 1)
     private Useability useability;
 
-    @OneToMany(mappedBy = "skill")
+    @OneToMany
     @JoinTable(name = "SKILL_MATERIAL_MAP",
             joinColumns = @JoinColumn(name = "SKILL_ID", referencedColumnName = "id",
                     foreignKey = @ForeignKey(name = "skill_mater_map_skill_fk")),
             inverseJoinColumns = @JoinColumn(name = "MATERIAL_ID", referencedColumnName = "id",
                     foreignKey = @ForeignKey(name = "skill_mater_map_mater_fk"))
     )
-    private List<Material> materials;
+    private Set<EquipmentItem> equipmentItems;
 
     @Column(name = "is_favorite", length = 1)
     private Boolean isFavorite;
@@ -128,12 +128,12 @@ public class Skill implements Serializable {
         this.useability = useability;
     }
 
-    public List<Material> getMaterials() {
-        return materials;
+    public Set<EquipmentItem> getMaterials() {
+        return equipmentItems;
     }
 
-    public void setMaterials(List<Material> materials) {
-        this.materials = materials;
+    public void setMaterials(Set<EquipmentItem> equipmentItems) {
+        this.equipmentItems = equipmentItems;
     }
 
     public Boolean getFavorite() {

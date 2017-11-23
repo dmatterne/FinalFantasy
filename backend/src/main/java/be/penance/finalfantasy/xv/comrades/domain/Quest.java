@@ -5,6 +5,7 @@ import be.penance.finalfantasy.xv.comrades.enums.QuestType;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "QUEST", schema = "public", uniqueConstraints = @UniqueConstraint(name = "quest_pk",
@@ -42,21 +43,13 @@ public class Quest implements Serializable {
     @Column(name = "bounty", length = 10)
     private Integer bounty;
 
-    @ManyToMany(mappedBy = "quests")
-    @JoinTable(name = "QUEST_MATERIAL",
-            inverseJoinColumns = @JoinColumn(name = "MATERIAL_ID", referencedColumnName = "id",
-                    foreignKey = @ForeignKey(name = "quest_mater_mater_fk")),
-            joinColumns = @JoinColumn(name = "QUEST_ID", referencedColumnName = "id",
-                    foreignKey = @ForeignKey(name = "quest_mater_quest_fk")))
-    private List<Material> materials;
-
     @ManyToMany
-    @JoinTable(name = "QUEST_REWARDS",
+    @JoinTable(name = "QUEST_ITEM",
             inverseJoinColumns = @JoinColumn(name = "ITEM_ID", referencedColumnName = "id",
                     foreignKey = @ForeignKey(name = "quest_item_item_fk")),
             joinColumns = @JoinColumn(name = "QUEST_ID", referencedColumnName = "id",
                     foreignKey = @ForeignKey(name = "quest_item_quest_fk")))
-    private List<Item> rewards;
+    private Set<Item> items;
 
     public Quest(QuestType type, String name, String description, Integer level, Location location, Integer kwhPower,
                  Integer bounty) {
@@ -133,19 +126,11 @@ public class Quest implements Serializable {
         this.bounty = bounty;
     }
 
-    public List<Material> getMaterials() {
-        return materials;
+    public Set<Item> getItems() {
+        return items;
     }
 
-    public void setMaterials(List<Material> materials) {
-        this.materials = materials;
-    }
-
-    public List<Item> getRewards() {
-        return rewards;
-    }
-
-    public void setRewards(List<Item> rewards) {
-        this.rewards = rewards;
+    public void setItems(Set<Item> items) {
+        this.items = items;
     }
 }

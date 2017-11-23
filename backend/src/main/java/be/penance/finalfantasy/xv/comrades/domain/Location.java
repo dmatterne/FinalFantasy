@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "LOCATION", schema = "public", uniqueConstraints = @UniqueConstraint(name = "location_pk", columnNames = {"id"}))
@@ -25,11 +26,11 @@ public class Location implements Serializable {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "location")
-    private List<Shop> shops;
+    private Set<Shop> shops;
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "location")
-    private List<Quest> quests;
+    private Set<Quest> quests;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -66,19 +67,19 @@ public class Location implements Serializable {
         this.description = description;
     }
 
-    public List<Shop> getShops() {
+    public Set<Shop> getShops() {
         return shops;
     }
 
-    public void setShops(List<Shop> shops) {
+    public void setShops(Set<Shop> shops) {
         this.shops = shops;
     }
 
-    public List<Quest> getQuests() {
+    public Set<Quest> getQuests() {
         return quests;
     }
 
-    public void setQuests(List<Quest> quests) {
+    public void setQuests(Set<Quest> quests) {
         this.quests = quests;
     }
 

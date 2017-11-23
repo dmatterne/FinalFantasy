@@ -1,11 +1,13 @@
 package be.penance.finalfantasy.xv.comrades.enums;
 
-public enum EquipType {
+public enum EquipItemType {
     KATANA,
     MACE,
     SPEAR,
     DAGGGERS,
     CROSSBOW,
     SHIELD,
-    SHURIKEN
+    SHURIKEN,
+    MATERIAL,
+    SIGIL
 }
