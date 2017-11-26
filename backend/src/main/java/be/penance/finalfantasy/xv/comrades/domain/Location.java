@@ -32,6 +32,9 @@ public class Location implements Serializable {
     @JoinColumn(name = "location")
     private Set<Quest> quests;
 
+    @OneToMany(mappedBy = "location")
+    protected Set<UserLocation> userLocations;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "createddate")
@@ -83,4 +86,19 @@ public class Location implements Serializable {
         this.quests = quests;
     }
 
+    public Set<UserLocation> getUserLocations() {
+        return userLocations;
+    }
+
+    public void setUserLocations(Set<UserLocation> userLocations) {
+        this.userLocations = userLocations;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
 }

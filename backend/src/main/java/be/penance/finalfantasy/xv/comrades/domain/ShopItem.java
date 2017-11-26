@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "SHOP_ITEM", schema = "public", uniqueConstraints = @UniqueConstraint(name = "shop_pk", columnNames = {"SHOP_ID" , "ITEM_ID"}))
+@Table(name = "SHOP_ITEM", schema = "public", uniqueConstraints = @UniqueConstraint(name = "shop_item_pk", columnNames = {"SHOP_ID" , "ITEM_ID"}))
 @Immutable
 public class ShopItem {
 

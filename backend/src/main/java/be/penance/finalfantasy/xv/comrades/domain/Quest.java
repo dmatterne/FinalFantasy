@@ -43,6 +43,9 @@ public class Quest implements Serializable {
     @Column(name = "bounty", length = 10)
     private Integer bounty;
 
+    @OneToMany(mappedBy = "quest")
+    protected Set<UserQuest> userQuests;
+
     @ManyToMany
     @JoinTable(name = "QUEST_ITEM",
             inverseJoinColumns = @JoinColumn(name = "ITEM_ID", referencedColumnName = "id",
@@ -132,5 +135,13 @@ public class Quest implements Serializable {
 
     public void setItems(Set<Item> items) {
         this.items = items;
+    }
+
+    public Set<UserQuest> getUserQuests() {
+        return userQuests;
+    }
+
+    public void setUserQuests(Set<UserQuest> userQuests) {
+        this.userQuests = userQuests;
     }
 }

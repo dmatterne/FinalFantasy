@@ -51,6 +51,9 @@ public class Item {
     @OneToMany(mappedBy = "item")
     protected Set<ShopItem> shopItems;
 
+    @OneToMany(mappedBy = "item")
+    protected Set<UserItem> userItems;
+
     public Item() {
     }
 
@@ -159,5 +162,13 @@ public class Item {
 
     public void setShopItems(Set<ShopItem> shopItems) {
         this.shopItems = shopItems;
+    }
+
+    public Set<UserItem> getUserItems() {
+        return userItems;
+    }
+
+    public void setUserItems(Set<UserItem> userItems) {
+        this.userItems = userItems;
     }
 }

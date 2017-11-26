@@ -7,34 +7,35 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "USER_QUEST", schema = "public", uniqueConstraints = @UniqueConstraint(name = "user_quest_pk", columnNames = {"USER_ID" , "QUEST_ID"}))
+@Table(name = "USER_SHOP", schema = "public", uniqueConstraints = @UniqueConstraint(name = "user_shop_pk", columnNames = {"USER_ID" , "SHOP_ID"}))
 @Immutable
-public class UserQuest {
+public class UserShop {
 
     @Embeddable
     public static class Id implements Serializable {
         @Column(name = "USER_ID")
         protected Long userId;
-        @Column(name = "QUEST_ID")
-        protected Long questId;
+        @Column(name = "SHOP_ID")
+        protected Long shopId;
 
         public Id() {
         }
-        public Id(Long userId, Long questId) {
+
+        public Id(Long userId, Long shopId) {
             this.userId = userId;
-            this.questId = questId;
+            this.shopId = shopId;
         }
 
         public boolean equals(Object o) {
             if (o != null && o instanceof Id) {
                 Id that = (Id) o;
                 return this.userId.equals(that.userId)
-                        && this.questId.equals(that.questId);
+                        && this.shopId.equals(that.shopId);
             }
             return false;
         }
         public int hashCode() {
-            return userId.hashCode() + questId.hashCode();
+            return userId.hashCode() + shopId.hashCode();
         }
 
     }
@@ -53,18 +54,18 @@ public class UserQuest {
 
     @ManyToOne
     @JoinColumn(
-            name = "QUEST_ID",insertable = false, updatable = false)
-    protected Quest quest;
+            name = "SHOP_ID",insertable = false, updatable = false)
+    protected Shop shop;
 
-    public UserQuest(
+    public UserShop(
             Boolean isUnlocked,
             User user,
-            Quest quest) {
+            Shop shop) {
         this.isUnlocked = isUnlocked;
         this.user = user;
-        this.quest = quest;
+        this.shop = shop;
         this.id.userId = user.getId();
-        this.id.questId = quest.getId();
-        user.getUserQuests().add(this);
+        this.id.shopId = shop.getId();
+        user.getUserShops().add(this);
     }
 }

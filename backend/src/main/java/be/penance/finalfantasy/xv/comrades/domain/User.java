@@ -23,12 +23,86 @@ public class User implements Serializable {
   @OneToMany(mappedBy = "user")
   private Set<Character> characters;
 
-  @ManyToMany
-  @JoinTable(name = "UNLOCKED_",
-    inverseJoinColumns = @JoinColumn(name = "ITEM_ID", referencedColumnName = "id",
-      foreignKey = @ForeignKey(name = "quest_item_item_fk")),
-    joinColumns = @JoinColumn(name = "QUEST_ID", referencedColumnName = "id",
-      foreignKey = @ForeignKey(name = "quest_item_quest_fk")))
-  private Set<Item> items;
+  @OneToMany(mappedBy = "user")
+  private Set<UserItem> userItems;
+
+  @OneToMany(mappedBy = "user")
+  private Set<UserLocation> userLocations;
+
+  @OneToMany(mappedBy = "user")
+  private Set<UserQuest> userQuests;
+
+  @OneToMany(mappedBy = "user")
+  private Set<UserShop> userShops;
+
+  public User(String name, String description) {
+    this.name = name;
+    this.description = description;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public Set<Character> getCharacters() {
+    return characters;
+  }
+
+  public void setCharacters(Set<Character> characters) {
+    this.characters = characters;
+  }
+
+  public Set<UserItem> getUserItems() {
+    return userItems;
+  }
+
+  public void setUserItems(Set<UserItem> userItems) {
+    this.userItems = userItems;
+  }
+
+  public Set<UserLocation> getUserLocations() {
+    return userLocations;
+  }
+
+  public void setUserLocations(Set<UserLocation> userLocations) {
+    this.userLocations = userLocations;
+  }
+
+  public Set<UserQuest> getUserQuests() {
+    return userQuests;
+  }
+
+  public void setUserQuests(Set<UserQuest> userQuests) {
+    this.userQuests = userQuests;
+  }
+
+  public Set<UserShop> getUserShops() {
+    return userShops;
+  }
+
+  public void setUserShops(Set<UserShop> userShops) {
+    this.userShops = userShops;
+  }
+
 
 }

@@ -5,7 +5,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -39,6 +38,9 @@ public class Shop implements Serializable {
 
     @OneToMany(mappedBy = "shop")
     protected Set<ShopItem> shopItems;
+
+    @OneToMany(mappedBy = "shop")
+    protected Set<UserShop> userShops;
 
     public Shop(String name, String description, Boolean isDeleted, Date createdDate, Location location) {
         this.name = name;
@@ -102,5 +104,13 @@ public class Shop implements Serializable {
 
     public void setShopItems(Set<ShopItem> shopItems) {
         this.shopItems = shopItems;
+    }
+
+    public Set<UserShop> getUserShops() {
+        return userShops;
+    }
+
+    public void setUserShops(Set<UserShop> userShops) {
+        this.userShops = userShops;
     }
 }
